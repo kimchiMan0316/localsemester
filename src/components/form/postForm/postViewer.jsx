@@ -1,6 +1,6 @@
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { CustomImage } from "./components/customImageExtansion";
 import { fromNow } from "../../../util/fromNow";
 import FontSize from "./components/customFontSize";
@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 export const PostViewer = ({ item, me, url, deletePosting }) => {
   const { isModal, openModal, closeModal } = useModal();
   const { response, fetcher } = useFetch();
+  const [photoId, setPhotoId] = useState(null);
   const navigate = useNavigate();
 
   const editor = useEditor({
@@ -59,6 +60,12 @@ export const PostViewer = ({ item, me, url, deletePosting }) => {
     if (item?.src && editor) {
       editor.commands.setContent(item.src);
     }
+    const getProfileId = async () => {
+      const res = await fetch("/user?id=" + item.userId);
+      const data = await res.json();
+      setPhotoId(data?.photoId);
+    };
+    getProfileId();
   }, [item, editor]);
 
   if (!editor) return null;
@@ -76,11 +83,7 @@ export const PostViewer = ({ item, me, url, deletePosting }) => {
         <div className="w-full">
           <div className="flex justify-between border-b border-[#ededed] pb-4 mb-4  dark:border-brand-sub">
             <div className="flex gap-4 items-center justify-start ">
-              <ProfilePhotoContainer
-                id={item.userId}
-                width="10"
-                alt="프로필사진"
-              />
+              <ProfilePhotoContainer id={photoId} width="10" alt="프로필사진" />
               <div className="h-10">
                 <p>{item.username}</p>
                 <p className="text-sm text-brand-sub">

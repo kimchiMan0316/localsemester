@@ -15,6 +15,7 @@ import { UpdatePost } from "../components/form/postForm/updatePost";
 import { LocalSemesterMain } from "../page/localSemester/page/main";
 import { LocalSemesterCreatePost } from "../page/localSemester/page/createPost";
 import { LocalSemesterPost } from "../page/localSemester/page/post";
+import { localSemesterLoader } from "./api/localsemesterLoader";
 
 export const router = createBrowserRouter([
   {
@@ -53,7 +54,7 @@ export const router = createBrowserRouter([
       {
         path: "/localSemesterCreate",
         element: <LocalSemesterCreatePost />,
-        loader: "",
+        loader: localSemesterLoader,
       },
       {
         path: "LocalSemesterPost:/:id",

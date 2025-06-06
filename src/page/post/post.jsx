@@ -1,3 +1,3 @@
 export const Post = () => {
-  return <div className="h-[700px]"></div>;
+  return <div></div>;
 };
