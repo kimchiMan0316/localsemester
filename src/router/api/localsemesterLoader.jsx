@@ -4,7 +4,8 @@ import { useMyProfile } from "store/myprofile";
 export const localSemesterLoader = async () => {
   const { state } = useMyProfile.getState().getMyProfile();
   if (state !== 777) {
-    return redirect(-1);
+    alert("로컬학기 게시판은 관리자만 접근 가능합니다.");
+    return redirect("/");
   }
 };
 // 로컬학기 게시판은 관리자만 접근 가능
