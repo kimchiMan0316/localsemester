@@ -12,6 +12,7 @@ import { OptionModal } from "../../modal/optionModal";
 import { useFetch } from "../../../hooks/useFetch";
 import { Modal } from "../../modal/modal";
 import { useNavigate } from "react-router-dom";
+import { type } from "@testing-library/user-event/dist/type";
 
 export const PostViewer = ({ item, me, url, deletePosting }) => {
   const { isModal, openModal, closeModal } = useModal();
@@ -44,14 +45,17 @@ export const PostViewer = ({ item, me, url, deletePosting }) => {
             headers: { "Content-Type": "application/json" },
           });
         }
-        deletePosting();
+        if (typeof deletePosting === "function") {
+          deletePosting();
+        }
+
         closeModal();
       },
     },
     {
       name: "수정하기",
       action: () => {
-        navigate(`/postEdit/${item.id}`);
+        navigate(`/${url}Edit/${item.id}`);
       },
     },
   ];

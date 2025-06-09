@@ -27,11 +27,6 @@ export const TopNav = ({ children }) => {
                   {item.name}
                 </TabButton>
               ))}
-
-              {/* <TabButton to="/">홈</TabButton>
-              <TabButton to="/localSemester">현지학기</TabButton>
-              <TabButton to="/post">게시판</TabButton>
-              <TabButton to="/member">조원소개</TabButton> */}
             </div>
             <div className="flex items-center gap-4 px-2">
               <ProfileButton />
