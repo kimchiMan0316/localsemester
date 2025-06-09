@@ -9,8 +9,8 @@ export const useGet = (url) => {
   useEffect(() => {
     const getFetch = async () => {
       setLoading(true);
-      const session = checkSession();
-      if (session) {
+      const session = await checkSession();
+      if (!session) {
         return <Navigate to="/login" replace={true} />;
       }
 
