@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useMyProfile } from "../../../store/myprofile";
 import MyEditor from "./postForm";
+import { Container } from "components/container/container";
 
 export const UpdatePost = ({ url }) => {
   const { id } = useParams();
@@ -41,7 +42,9 @@ export const UpdatePost = ({ url }) => {
       {loading ? (
         <p>loading...</p>
       ) : (
-        <MyEditor init={response} url={url} exitPath={-1} post={false} />
+        <Container>
+          <MyEditor init={response} url={url} exitPath={-1} post={false} />
+        </Container>
       )}
     </div>
   );

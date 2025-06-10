@@ -2,7 +2,6 @@
 import { useEditor, EditorContent } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import TextAlign from "@tiptap/extension-text-align";
-import { Container } from "../../container/container";
 import Placeholder from "@tiptap/extension-placeholder";
 import { MenuBar } from "./components/menuBar";
 import { CustomImage } from "./components/customImageExtansion";
@@ -23,15 +22,7 @@ import { useMyProfile } from "../../../store/myprofile";
 // init 게시글 한개
 // post 글 작성이면 true 글 수정이면 false
 
-const MyEditor = ({
-  url,
-  exitPath,
-  closeModal,
-  callback,
-  className,
-  init,
-  post,
-}) => {
+const MyEditor = ({ url, exitPath, closeModal, callback, init, post }) => {
   const [title, setTitle] = useState(init?.title || "");
   const nav = useNavigate();
   const { id, username } = useMyProfile((state) => state.myProfile);
@@ -146,7 +137,7 @@ const MyEditor = ({
   };
 
   return (
-    <Container className={className}>
+    <>
       <div className="p-4">
         <input
           onChange={(e) => setTitle(e.target.value)}
@@ -169,7 +160,7 @@ const MyEditor = ({
           발행하기
         </Button>
       </div>
-    </Container>
+    </>
   );
 };
 
