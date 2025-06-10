@@ -12,7 +12,11 @@ import { OptionModal } from "../../modal/optionModal";
 import { useFetch } from "../../../hooks/useFetch";
 import { Modal } from "../../modal/modal";
 import { useNavigate } from "react-router-dom";
-import { type } from "@testing-library/user-event/dist/type";
+
+// item 게시글 받은 배열중 하나
+// me 본인 글인지 확인 boolean
+// url 게시글을 저장해야하는 테이블
+// deletePosting 게시글 삭제 후 처리할 함수
 
 export const PostViewer = ({ item, me, url, deletePosting }) => {
   const { isModal, openModal, closeModal } = useModal();
@@ -55,7 +59,7 @@ export const PostViewer = ({ item, me, url, deletePosting }) => {
     {
       name: "수정하기",
       action: () => {
-        navigate(`/${url}Edit/${item.id}`);
+        navigate(`${url}Edit/${item.id}`);
       },
     },
   ];
@@ -65,9 +69,9 @@ export const PostViewer = ({ item, me, url, deletePosting }) => {
       editor.commands.setContent(item.src);
     }
     const getProfileId = async () => {
-      const res = await fetch("/user?id=" + item.userId);
+      const res = await fetch(`/user?id=${item.userId}`);
       const data = await res.json();
-      setPhotoId(data?.photoId);
+      setPhotoId(data[0]?.photoId);
     };
     getProfileId();
   }, [item, editor]);

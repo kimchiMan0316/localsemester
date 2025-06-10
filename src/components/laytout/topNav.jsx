@@ -5,7 +5,7 @@ import { ProfileButton } from "../button/profileButton";
 import { TabButton } from "../button/tabButton";
 import { Container } from "../container/container";
 
-export const TopNav = ({ children }) => {
+export const TopNav = ({ children, isLocalSemester }) => {
   const page = [
     { path: "/", name: "홈" },
     { path: "/localSemester", name: "현지학기제" },
@@ -14,7 +14,12 @@ export const TopNav = ({ children }) => {
   ];
 
   return (
-    <nav className="fixed flex items-center w-screen h-16 border-b bg-white border-b-[#ededed] z-10 dark:border-b-[#282828] dark:bg-brand-dark">
+    <nav
+      className={
+        "fixed flex items-center w-screen h-16 border-b bg-white border-b-[#ededed] z-10 dark:border-b-[#282828] dark:bg-brand-dark " +
+        (isLocalSemester ? "bg-transparent" : "")
+      }
+    >
       <Container>
         <div className="flex justify-between items-center px-2 md:p-0">
           <TabButton to="/" className="w-36  aspect-[10/4] flex items-center">
