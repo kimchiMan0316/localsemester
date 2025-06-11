@@ -20,10 +20,23 @@ export const TopNav = ({ children, isLocalSemester }) => {
   useEffect(() => {
     const handleScroll = () => {
       const nav = document.querySelector("nav");
+      console.log(window.scrollY);
       if (window.scrollY > 5) {
-        nav.classList.add("bg-white", "border-b", "border-[#ededed]");
+        nav.classList.add(
+          "bg-white",
+          "border-b",
+          "border-[#ededed]",
+          "dark:border-b-[#282828]",
+          "dark:bg-brand-dark"
+        );
       } else {
-        nav.classList.remove("bg-white", "border-b", "border-[#ededed]");
+        nav.classList.remove(
+          "bg-white",
+          "border-b",
+          "border-[#ededed]",
+          "dark:border-b-[#282828]",
+          "dark:bg-brand-dark"
+        );
       }
     };
     window.addEventListener("scroll", handleScroll);
