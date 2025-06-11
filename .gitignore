@@ -11,8 +11,8 @@
 # production
 /build
 
-#json servers
-/db.json
+# #json servers
+# /db.json
 
 # misc
 .DS_Store
