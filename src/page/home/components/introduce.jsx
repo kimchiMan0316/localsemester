@@ -2,7 +2,7 @@ import { AnimatedContainer } from "../../../components/animationContainer/animat
 
 import 수업사진 from "../../../assets/수업사진.jpg";
 import 컴퓨터공부사진 from "../../../assets/컴퓨터 공부 사진.jpg";
-import 캡스톤사진 from "../../../assets/캡스톤사진.jpg";
+import 캡스톤사진 from "../../../assets/캡스톤 사진.jpg";
 import 면접준비 from "../../../assets/일본에서 일하는 사진.jpg";
 
 // 씨발 무조건 리팩토링 해라

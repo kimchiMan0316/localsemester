@@ -1,3 +1,3 @@
 export const LocalSemesterMain = () => {
-  return <div>localSemesterLoader</div>;
+  return <div>hello world</div>;
 };
