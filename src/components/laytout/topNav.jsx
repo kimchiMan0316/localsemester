@@ -45,7 +45,3 @@ export const TopNav = ({ children }) => {
     </nav>
   );
 };
-
-const maruta = () => {
-  console.log("마루타");
-};
