@@ -41,22 +41,24 @@ export const CommentBox = ({ comment, url, callback }) => {
           className="h-auto flex flex-col py-6 border-b border-[#ededed] dark:border-brand-sub"
         >
           <div className="flex items-center">
-            <ProfilePhotoContainer width={16} id={item.userId} alt="" />
+            <ProfilePhotoContainer width={16} id={item?.userId} alt="" />
             <div className="mx-4">
-              <p className="font-bold text-lg">{item.username}</p>
-              <p className="text-xs text-brand-sub">{fromNow(item.createAt)}</p>
+              <p className="font-bold text-lg">{item?.username}</p>
+              <p className="text-xs text-brand-sub">
+                {fromNow(item?.createAt)}
+              </p>
             </div>
-            {item.userId === id ? (
+            {item?.userId === id ? (
               <div
                 className="bg-brand-point dark:bg-card-dark hover:opacity-60 text-sm text-brand-sub rounded-md cursor-pointer ml-2 px-2"
-                onClick={() => deleteButton(item.id)}
+                onClick={() => deleteButton(item?.id)}
               >
                 X
               </div>
             ) : null}
           </div>
           <div className="mt-4">
-            <p>{item.article}</p>
+            <p>{item?.article}</p>
           </div>
         </div>
       ))}
