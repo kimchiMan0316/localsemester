@@ -3,6 +3,7 @@ import { useMyProfile } from "../../store/myprofile";
 import { fromNow } from "../../util/fromNow";
 import { ProfilePhotoContainer } from "../container/profilePhotoContainer";
 
+// 최신순으로 정렬된 댓글을 보여주여야하므로 처음 comment 배열을 넣을때 순서를 뒤집어서 넣어야함
 // 댓글 배열만 받는 컴포넌트
 // comment = 댓글 리스트 배열
 // url = 댓글 삭제시 테이블 이름

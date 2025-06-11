@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import Logo from "../../assets/untityLogo.png";
 import { DisplayControler } from "../button/displayControler";
 import { MenuIcon } from "../button/menu";
@@ -12,14 +13,27 @@ export const TopNav = ({ children, isLocalSemester }) => {
     { path: "/post", name: "게시판" },
     { path: "/member", name: "맴버" },
   ];
+  const navbg = isLocalSemester
+    ? "bg-transparent"
+    : "border-b bg-white border-b-[#ededed] dark:border-b-[#282828] dark:bg-brand-dark ";
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const nav = document.querySelector("nav");
+      if (window.scrollY > 5) {
+        nav.classList.add("bg-white", "border-b", "border-[#ededed]");
+      } else {
+        nav.classList.remove("bg-white", "border-b", "border-[#ededed]");
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
-    <nav
-      className={
-        "fixed flex items-center w-screen h-16 border-b bg-white border-b-[#ededed] z-10 dark:border-b-[#282828] dark:bg-brand-dark " +
-        (isLocalSemester ? "bg-transparent" : "")
-      }
-    >
+    <nav className={"fixed flex items-center w-screen h-16  z-10 " + navbg}>
       <Container>
         <div className="flex justify-between items-center px-2 md:p-0">
           <TabButton to="/" className="w-36  aspect-[10/4] flex items-center">
