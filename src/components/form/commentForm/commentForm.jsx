@@ -1,8 +1,8 @@
 import { Button } from "../../button/button";
 import useChange from "../../../hooks/useChange";
 import { useMyProfile } from "../../../store/myprofile";
-import { useFetch } from "../../../hooks/useFetch";
 import { createAt } from "../../../util/createAt";
+import { checkAuth } from "auth/auth";
 
 // articleId = 게시글 id
 // url 댓글을 저장해야하는 테이블
@@ -13,26 +13,34 @@ export const CommentForm = ({ articleId, url, getComment }) => {
     comment: "",
   });
   const { id, username } = useMyProfile((state) => state.myProfile);
-  const { response, fetcher } = useFetch();
 
   const createComment = async () => {
     const key = url === "/postComment" ? "postId" : "semesterId";
 
     try {
-      await fetcher({
-        url: url,
-        method: "POST",
-        body: {
-          userId: id,
-          username: username,
-          [key]: articleId,
-          article: inputValue.comment,
-          createAt: createAt(),
-        },
-      });
+      if (inputValue.comment.trim() === "") {
+        alert("댓글을 입력해주세요.");
+        return;
+      }
 
-      if (typeof getComment === "function") {
-        getComment(response);
+      const session = await checkAuth();
+      if (!session) {
+        alert("로그인이 필요합니다.");
+        return;
+      } else {
+        const response = await fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            userId: id,
+            username: username,
+            [key]: articleId,
+            article: inputValue.comment,
+            createAt: createAt(),
+          }),
+        });
+        const data = await response.json();
+        getComment(data);
       }
     } catch (error) {
       console.error(error);

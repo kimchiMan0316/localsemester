@@ -5,6 +5,8 @@ import { useMyProfile } from "../../../store/myprofile";
 import MyEditor from "./postForm";
 import { Container } from "components/container/container";
 
+// url : 게시글을 저장해야하는 테이블
+
 export const UpdatePost = ({ url }) => {
   const { id } = useParams();
   const navigate = useNavigate();
