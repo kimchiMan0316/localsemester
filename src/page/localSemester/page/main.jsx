@@ -32,9 +32,14 @@ export const LocalSemesterMain = () => {
   // 1410 831
   return (
     <>
-      <div className="h-screen lg:block hidden">
-        <video muted autoPlay loop className="w-full h-full object-cover">
-          <source src={semesterVideo} type="video/mp4" />
+      <div className="lg:h-screen lg:block hidden">
+        <video
+          muted
+          autoPlay
+          loop
+          className="w-full h-full object-cover lg:block hidden"
+        >
+          <source src={semesterVideo} type="video/mp4 lg:block hidden" />
         </video>
       </div>
       <div className="mt-40 flex justify-center">
