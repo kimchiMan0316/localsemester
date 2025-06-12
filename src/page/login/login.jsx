@@ -30,7 +30,7 @@ const Login = () => {
 
   return (
     <div className="flex flex-col justify-center items-center w-screen h-screen ">
-      <div className="flex flex-col justify-start items-center border border-[#dcdcdc] dark:border-none md:dark:border-[#161b22] p-8 rounded-2xl">
+      <div className="flex flex-col justify-start items-center md:border md:border-[#dcdcdc] dark:border-none md:dark:border-[#161b22] sm:p-8  rounded-2xl">
         <div className="w-48">
           <img className="object-cover" src={logo} alt="logo" />
         </div>
@@ -41,7 +41,7 @@ const Login = () => {
             })
           }
           autoComplete="off"
-          className="w-96 my-4"
+          className="w-full sm:w-96 my-4 "
         >
           <Input
             value={inputValue.userId}
