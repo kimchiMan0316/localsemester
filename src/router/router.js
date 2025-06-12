@@ -57,7 +57,7 @@ export const router = createBrowserRouter([
         loader: localSemesterLoader,
       },
       {
-        path: "LocalSemesterPost:/:id",
+        path: "/localSemesterPost/:id",
         element: <LocalSemesterPost />,
       },
       {
