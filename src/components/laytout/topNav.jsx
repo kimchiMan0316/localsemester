@@ -16,16 +16,14 @@ export const TopNav = ({ children, isLocalSemester }) => {
   const navbg = isLocalSemester
     ? "bg-transparent"
     : "border-b bg-white border-b-[#ededed] dark:border-b-[#282828] dark:bg-brand-dark ";
-
   useEffect(() => {
     const handleScroll = () => {
       const nav = document.querySelector("nav");
-      console.log(window.scrollY);
-      if (window.scrollY > 5) {
+      if (window.scrollY > 5 && isLocalSemester) {
         nav.classList.add(
           "bg-white",
           "border-b",
-          "border-[#ededed]",
+          "border-b-[#ededed]",
           "dark:border-b-[#282828]",
           "dark:bg-brand-dark"
         );
@@ -33,7 +31,7 @@ export const TopNav = ({ children, isLocalSemester }) => {
         nav.classList.remove(
           "bg-white",
           "border-b",
-          "border-[#ededed]",
+          "border-b-[#ededed]",
           "dark:border-b-[#282828]",
           "dark:bg-brand-dark"
         );
@@ -46,8 +44,13 @@ export const TopNav = ({ children, isLocalSemester }) => {
   }, []);
 
   return (
-    <nav className={"fixed flex items-center w-screen h-16  z-10 " + navbg}>
-      <Container>
+    <nav
+      className={
+        "fixed top-0 flex justify-center items-center w-screen h-16  z-10 " +
+        navbg
+      }
+    >
+      <div className="lg:w-[1200px] w-screen px-2">
         <div className="flex justify-between items-center px-2 md:p-0">
           <TabButton to="/" className="w-36  aspect-[10/4] flex items-center">
             <img src={Logo} className="object-cover" alt="logo" />
@@ -67,7 +70,7 @@ export const TopNav = ({ children, isLocalSemester }) => {
             </div>
           </div>
         </div>
-      </Container>
+      </div>
       {children}
     </nav>
   );

@@ -1,3 +1,66 @@
+import { useEffect, useState } from "react";
+import { PostViewer } from "../../../components/form/postForm/postViewer";
+import { useNavigate, useParams } from "react-router-dom";
+import { Container } from "../../../components/container/container";
+import { useMyProfile } from "../../../store/myprofile";
+import { CommentForm } from "../../../components/form/commentForm/commentForm";
+import { CommentBox } from "components/box/commentBox";
+
 export const LocalSemesterPost = () => {
-  return <div></div>;
+  const [article, setArticle] = useState();
+  const { id: userid } = useMyProfile((state) => state.myProfile);
+  const { id } = useParams();
+  const nav = useNavigate();
+  const [comments, setComments] = useState([]);
+
+  const me = article?.userId === userid;
+
+  useEffect(() => {
+    const getArticle = async () => {
+      try {
+        const req = await fetch("/semester/" + id);
+        const res = await req.json();
+        setArticle(res);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getArticle();
+  }, [id]);
+
+  useEffect(() => {
+    fetch("/semesterComment")
+      .then((res) => res.json())
+      .then((data) => {
+        setComments(data);
+      });
+  }, []);
+
+  const getcomments = (newComments) => {
+    setComments((state) => [...state, newComments]);
+    console.log(comments);
+  };
+
+  return (
+    <>
+      <Container className="relative pb-64">
+        {article && (
+          <PostViewer
+            item={article}
+            me={me}
+            url="/semester"
+            deletePosting={() => nav(-1)}
+          />
+        )}
+      </Container>
+      <Container>
+        <CommentForm
+          articleId={id}
+          url={"/semesterComment"}
+          getComment={getcomments}
+        />
+        <CommentBox comment={comments} url={"/semesterComment"} />
+      </Container>
+    </>
+  );
 };
