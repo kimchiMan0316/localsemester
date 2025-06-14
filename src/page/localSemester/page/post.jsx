@@ -15,6 +15,10 @@ export const LocalSemesterPost = () => {
 
   const me = article?.userId === userid;
 
+  const deleteComment = (id) => {
+    fetchComments();
+  };
+
   useEffect(() => {
     const getArticle = async () => {
       try {
@@ -34,6 +38,16 @@ export const LocalSemesterPost = () => {
       .then((data) => {
         setComments(data);
       });
+  }, []);
+
+  const fetchComments = () => {
+    fetch("/semesterComment")
+      .then((res) => res.json())
+      .then((data) => setComments(data));
+  };
+
+  useEffect(() => {
+    fetchComments();
   }, []);
 
   const getcomments = (newComments) => {
@@ -59,7 +73,11 @@ export const LocalSemesterPost = () => {
           url={"/semesterComment"}
           getComment={getcomments}
         />
-        <CommentBox comment={comments} url={"/semesterComment"} />
+        <CommentBox
+          comment={comments}
+          url={"/semesterComment"}
+          deleteComment={deleteComment}
+        />
       </Container>
     </>
   );
