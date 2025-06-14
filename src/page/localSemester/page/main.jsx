@@ -37,9 +37,7 @@ export const LocalSemesterMain = () => {
           <source src={semesterVideo} type="video/mp4 " />
         </video>
       </div>
-      <div className="mt-40 flex justify-center">
-        <PostList semesters={semesters} onClick={onClickSemesters} />
-      </div>
+
       <Container>
         <div>
           <div className="flex flex-row items-start justify-start mt-52">
@@ -140,6 +138,9 @@ export const LocalSemesterMain = () => {
           </div>
         </div>
       </Container>
+      <div className="mt-40 flex justify-center">
+        <PostList semesters={semesters} onClick={onClickSemesters} />
+      </div>
     </>
   );
 };
