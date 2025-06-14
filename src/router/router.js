@@ -6,7 +6,7 @@ import Login from "../page/login/login";
 import { CreateAccount } from "../page/createAccount/create_Account";
 import DefaultLayout from "../components/laytout/defaultLayout";
 import { PostList } from "../page/post/postList";
-import { Member }   from "../page/member/member";
+import  Member from "../page/member/member";
 import { ErrorPage } from "../page/error/error";
 import { profileLoader } from "./api/profileLoader";
 import { Account } from "../page/account/account";
