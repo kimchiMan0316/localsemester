@@ -10,7 +10,7 @@ export const PostList = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const goToWrite = () => navigate("/postWrite");
+  const postCreate = () => navigate("/postCreate");
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -38,7 +38,7 @@ export const PostList = () => {
       <div className="flex items-center justify-between mb-4">
         <h1 className="text-xl font-bold">게시판</h1>
         <button
-          onClick={goToWrite}
+          onClick={postCreate}
           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
         >
           글쓰기
