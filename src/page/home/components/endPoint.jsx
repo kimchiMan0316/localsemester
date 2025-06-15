@@ -1,6 +1,6 @@
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useRef } from "react";
-import 수업 from "../../../assets/캡스톤사진.jpg";
+import 수업 from "../../../assets/캡스톤 사진.jpg"
 
 export const EndPoint = () => {
   const target = useRef(null);

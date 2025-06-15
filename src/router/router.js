@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Home } from "../page/home/home";
 import { Profile } from "../page/profile/profile";
-import { Post } from "../page/post/post";
+import { PostDetail, PostDetajl } from "../page/post/postDetail";
 import Login from "../page/login/login";
 import { CreateAccount } from "../page/createAccount/create_Account";
 import DefaultLayout from "../components/laytout/defaultLayout";
@@ -37,7 +37,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/post/:id",
-        element: <Post />,
+        element: <PostDetail />,
       },
       {
         path: "/postEdit/:id",
