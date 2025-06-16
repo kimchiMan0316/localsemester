@@ -6,7 +6,7 @@ import Login from "../page/login/login";
 import { CreateAccount } from "../page/createAccount/create_Account";
 import DefaultLayout from "../components/laytout/defaultLayout";
 import { PostList } from "../page/post/postList";
-import { Member } from "../page/member/member";
+import Member from "../page/member/member";
 import { ErrorPage } from "../page/error/error";
 import { profileLoader } from "./api/profileLoader";
 import { Account } from "../page/account/account";
@@ -16,6 +16,7 @@ import { LocalSemesterMain } from "../page/localSemester/page/main";
 import { LocalSemesterCreatePost } from "../page/localSemester/page/createPost";
 import { LocalSemesterPost } from "../page/localSemester/page/post";
 import { localSemesterLoader } from "./api/localsemesterLoader";
+import { memberLoader } from "./api/memberLoader";
 import MyEditor from "../components/form/postForm/postForm";
 
 export const router = createBrowserRouter([
@@ -42,7 +43,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/postCreate",
-        element: <MyEditor url={"/post"} />,
+        element: <MyEditor url={"/post"} exitPath={"/post"} post={true} />,
       },
       {
         path: "/postEdit/:id",
@@ -51,6 +52,7 @@ export const router = createBrowserRouter([
       {
         path: "/member",
         element: <Member />,
+        loader: memberLoader,
       },
       {
         path: "/localSemester",

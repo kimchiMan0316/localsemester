@@ -1,4 +1,4 @@
-import { redirect, replace } from "react-router-dom";
+import { redirect } from "react-router-dom";
 import { useMyProfile } from "../../store/myprofile";
 import getPhoto from "../../util/getPhoto";
 

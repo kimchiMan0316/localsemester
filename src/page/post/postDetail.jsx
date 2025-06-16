@@ -1,24 +1,51 @@
 // PostDetail.jsx
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { PostHeader } from "./postHeader";
+import { useParams, useNavigate } from "react-router-dom";
 import { PostViewer } from "../../components/form/postForm/postViewer";
+import { Container } from "../../components/container/container";
+import { useMyProfile } from "../../store/myprofile";
 import { CommentBox } from "../..//components/box/commentBox"
 import { CommentForm } from "../../components/form/commentForm/commentForm";
 
 export const PostDetail = () => {
     const { id } = useParams();
+    const { id: myId } = useMyProfile((state) => state.myProfile);
     const [posts, setPosts] = useState(null);
     const [comments, setComments] = useState([]);
+    const me = posts?.userId === myId; // 현재 사용자가 작성자와 같은지 확인
+    const navigator = useNavigate();
 
     useEffect(() => {
-        // 게시글 정보 가져오기
-        fetch(`/post/${id}`)
-            .then((res) => res.json())
-            .then(setPosts);
+        const getPost = async () => {
+            try {
+                const req = await fetch(`/post/${id}`);
+                const res = await req.json();
+                setPosts(res);
 
-        fetchComments(); // 댓글 가져오기
+            } catch (error) {
+                console.error("게시글 가져오기 중 오류 발생:", error);
+            }
+        }
+
+        // 게시글 정보 가져오기
+        getPost();
+
+
+
+
     }, [id]);
+
+    useEffect(() => {
+        // 댓글 정보 가져오기
+        fetch(`/postComment`)
+            .then((res) => res.json())
+            .then((data) => {
+                setComments(data);
+            })
+            .catch((error) => {
+                console.error("댓글 가져오기 중 오류 발생:", error);
+            });
+    }, []);
 
     const fetchComments = async () => {
         try {
@@ -33,14 +60,19 @@ export const PostDetail = () => {
             console.error("댓글 가져오기 중 오류 발생:", error);
         }
     };
+
     if (!posts) return <p>로딩 중...</p>;
 
     return (
-        <div className="space-y-4">
-            <PostHeader post={posts} />
-            <PostViewer item={posts} />
-            <CommentBox comment={comments} url={"/postComment"} deleteComment={fetchComments} />
-            <CommentForm articleId={id} url={"/postComment"} getComment={fetchComments} />
-        </div>
+        <>
+            <Container className="relative pb-64">
+                <PostViewer item={posts} me={me} url="/post" deletePosting={() => navigator(-1)} />
+            </Container>
+            <Container>
+                <CommentForm articleId={id} url={"/postComment"} getComment={fetchComments} />
+                <CommentBox comment={comments} url={"/postComment"} />
+
+            </Container>
+        </>
     );
 };

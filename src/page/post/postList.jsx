@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
+import getPhoto from "util/getPhoto";
 import { Container } from "../../components/container/container";
 import { PostCard } from "./postCard"; // 게시글 카드 컴포넌트
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 export const PostList = () => {
