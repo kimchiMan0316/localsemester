@@ -14,6 +14,7 @@ const slogans = [
   "우리는 함께 성장합니다.",
   "각자의 색깔이 모여 하나의 팀이 됩니다.",
   "열정은 우리의 공통 언어입니다.",
+  "협력은 우리를 하나로 이어줍니다.",
 ];
 
 const Member = () => {
@@ -55,40 +56,40 @@ const Member = () => {
   };
 
   return (
-    <main className="bg-black text-white font-sans overflow-x-hidden">
-      <IntroSection />
+   <main className="bg-white text-black dark:bg-black dark:text-white font-sans overflow-x-hidden min-h-screen">
+  <IntroSection darkMode={true} />
 
-      {members.map((member, index) => (
-        <React.Fragment key={member.id}>
-          <MemberSection
-            member={member}
-            index={index}
-            sectionRef={(el) => (sectionRefs.current[index] = el)}
-            onClick={() => handleCardClick(member)}
-            slogan={slogans[index]}
-          />
-          {slogans[index] && <SloganSection slogan={slogans[index]} />}
-        </React.Fragment>
-      ))}
-
-      <MemberNameList
-        members={members}
-        sectionRefs={sectionRefs}
+  {members.map((member, index) => (
+    <React.Fragment key={member.id}>
+      <MemberSection
+        member={member}
+        index={index}
+        sectionRef={(el) => (sectionRefs.current[index] = el)}
+        onClick={() => handleCardClick(member)}
+        slogan={slogans[index]}
+        darkMode={true}
       />
+      {slogans[index] && <SloganSection slogan={slogans[index]} darkMode={true} />}
+    </React.Fragment>
+  ))}
 
-      {isModal && selectedMember && (
-        <MemberModal
-          member={selectedMember}
-          isEditing={isEditing}
-          setIsEditing={setIsEditing}
-          editMessage={editMessage}
-          setEditMessage={setEditMessage}
-          onClose={closeModal}
-          onSave={handleEditSave}
-          isAdmin={myId === selectedMember.id && myState === 777}
-        />
-      )}
-    </main>
+  <MemberNameList members={members} sectionRefs={sectionRefs} darkMode={true} />
+
+  {isModal && selectedMember && (
+    <MemberModal
+      member={selectedMember}
+      isEditing={isEditing}
+      setIsEditing={setIsEditing}
+      editMessage={editMessage}
+      setEditMessage={setEditMessage}
+      onClose={closeModal}
+      onSave={handleEditSave}
+      isAdmin={myId === selectedMember.id && myState === 777}
+      darkMode={true}
+    />
+  )}
+</main>
+
   );
 };
 

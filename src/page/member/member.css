@@ -21,7 +21,7 @@
 }
 
 .animate-title-fade {
-  animation: titleFadeIn 5s ease forwards; /* 3초 동안 천천히 등장 */
+  animation: titleFadeIn 5s ease forwards; 
 }
 
 .speed-text {
@@ -29,8 +29,10 @@
   font-size: 2rem;
   letter-spacing: -1px;
 
-  background: linear-gradient(to right, #f8cdbb 60%, #ffffff 100%);
+  background: linear-gradient(to right, #37b5ff , #df6c6c 50%, #d17bf0  90%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
 }
+
+
