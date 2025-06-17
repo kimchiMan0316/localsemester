@@ -52,9 +52,10 @@ export const PostList = () => {
         </button>
       </div>
 
-      {loading && <p>로딩 중입니다...</p>}
-      {!loading && posts.length > 0 ? (
-        <div className="space-y-4">
+      {loading ? (
+        <p>로딩 중입니다...</p>
+      ) : posts.length > 0 ? (
+        <div className="space-y-4 pt-4 mb-6">
           {currentPosts.map((item) => (
             <PostCard key={item.id} item={item} />
           ))}

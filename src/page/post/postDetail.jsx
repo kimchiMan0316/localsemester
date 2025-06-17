@@ -1,4 +1,3 @@
-// PostDetail.jsx
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { PostViewer } from "../../components/form/postForm/postViewer";
@@ -12,7 +11,8 @@ export const PostDetail = () => {
     const { id: myId } = useMyProfile((state) => state.myProfile);
     const [posts, setPosts] = useState(null);
     const [comments, setComments] = useState([]);
-    const me = posts?.userId === myId; // 현재 사용자가 작성자와 같은지 확인
+    const me = posts?.userId === myId;
+    // 게시글 작성자와 현재 로그인한 사용자가 같은지 확인
     const navigator = useNavigate();
 
     useEffect(() => {
@@ -47,18 +47,9 @@ export const PostDetail = () => {
             });
     }, []);
 
-    const fetchComments = async () => {
-        try {
-            const response = await fetch(`/postComment?postId=${id}`);
-            if (response.ok) {
-                const data = await response.json();
-                setComments(data);
-            } else {
-                console.error("댓글 가져오기 실패");
-            }
-        } catch (error) {
-            console.error("댓글 가져오기 중 오류 발생:", error);
-        }
+    const getcomments = (newComments) => {
+        setComments((state) => [...state, newComments]);
+        console.log(comments);
     };
 
     if (!posts) return <p>로딩 중...</p>;
@@ -69,7 +60,7 @@ export const PostDetail = () => {
                 <PostViewer item={posts} me={me} url="/post" deletePosting={() => navigator(-1)} />
             </Container>
             <Container>
-                <CommentForm articleId={id} url={"/postComment"} getComment={fetchComments} />
+                <CommentForm articleId={id} url={"/postComment"} getComment={getcomments} />
                 <CommentBox comment={comments} url={"/postComment"} />
 
             </Container>

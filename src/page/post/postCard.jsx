@@ -41,7 +41,7 @@ export const PostCard = ({ item }) => {
   return (
     <Link
       to={`/post/${id}`}
-      className="block w-full bg-white rounded-xl shadow px-4 py-4 mb-6 hover:shadow-lg dark:bg-card-dark"
+      className="block w-full bg-white rounded-xl shadow px-4 py-4 hover:shadow-lg dark:bg-card-dark"
     >
       <div className="flex items-center">
         {/* 왼쪽: 프로필/작성자/날짜/글 */}
