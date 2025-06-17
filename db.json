@@ -72,6 +72,11 @@
       "sessionId": 1749639269428,
       "uid": 1,
       "id": 2
+    },
+    {
+      "sessionId": 1750154028682,
+      "uid": 1,
+      "id": 3
     }
   ],
   "post": [
@@ -181,7 +186,7 @@
       "id": 2,
       "userId": 1,
       "semesterId": 1,
-      "article": "줫대긴하노",https://github.com/kimchiMan0316/localsemester/pull/9/conflict?name=db.json&ancestor_oid=f2f47fb3341f8ce2f452a94f5eaea6ce3cd8925a&base_oid=0c93cc99728411d6c7098aa52a260a383068be54&head_oid=76e9ef9b2782def577ed94576c3dd10d3091c833
+      "article": "줫대긴하노",
       "createAt": "2025-05-26 16:30:30",
       "username": "박설호"
     }
