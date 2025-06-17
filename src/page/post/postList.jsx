@@ -43,7 +43,7 @@ export const PostList = () => {
   return (
     <Container>
       <div className="flex items-center justify-between mb-4">
-        <h1 className="text-xl font-bold">게시판</h1>
+        <h1 className="text-xl font-kakao">게시판</h1>
         <button
           onClick={postCreate}
           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
