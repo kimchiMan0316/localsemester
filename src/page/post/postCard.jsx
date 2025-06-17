@@ -1,23 +1,74 @@
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import getPhoto from "util/getPhoto";
+import { fromNow } from "../../util/fromNow";
+import noimage from "../../assets/noimage.jpg";
 
 export const PostCard = ({ item }) => {
-  const { id, title, content, userId, createdAt } = item;
+  const { id, title, article, photoId, createAt, userId, username } = item;
+  const [thumbnail, setThumbnail] = useState("");
+  const [profilePhoto, setProfilePhoto] = useState("");
 
-  console.log("🧾 PostCard item:", item); // 확인용 로그
+  // 게시글 썸네일
+  useEffect(() => {
+    const fetchThumbnail = async () => {
+      if (photoId) {
+        const url = await getPhoto(photoId);
+        setThumbnail(url);
+      }
+    };
+    fetchThumbnail();
+  }, [photoId]);
+
+  // 작성자 프로필 이미지
+  useEffect(() => {
+    const fetchProfilePhoto = async () => {
+      if (!userId) return;
+      // user 정보 fetch
+      const res = await fetch(`/user?id=${userId}`);
+      const users = await res.json();
+      const user = users[0];
+      if (user?.photoId) {
+        const url = await getPhoto(user.photoId);
+        setProfilePhoto(url);
+      } else {
+        setProfilePhoto(""); // 기본 이미지 처리 가능
+      }
+    };
+    fetchProfilePhoto();
+  }, [userId]);
 
   return (
-    <Link to={`/post/${id}`} className="block p-4 border rounded hover:shadow transition">
+    <Link
+      to={`/post/${id}`}
+      className="block w-full bg-white rounded-xl shadow px-4 py-4 mb-6 hover:shadow-lg dark:bg-card-dark"
+    >
       <div className="flex items-center">
-        {/*  {thumbnail && (
-          <img src={thumbnail} alt="썸네일" className="w-24 h-24 object-cover mr-4 rounded" />
-        )} */}
-        <div className="flex-1">
-          <h2 className="font-semibold text-lg">{title}</h2>
-          <p className="text-sm text-gray-500 truncate">{content}</p>
-          <p className="text-xs text-gray-400 mt-2">
-            {userId?.username} · {new Date(createdAt).toLocaleDateString()}
-          </p>
+        {/* 왼쪽: 프로필/작성자/날짜/글 */}
+        <div className="flex-1 min-w-0">
+          <div className="flex items-center mb-2">
+            <img
+              src={profilePhoto || "/default-profile.png"}
+              alt="프로필"
+              className="w-10 h-10 rounded-full object-cover mr-3 bg-gray-200"
+            />
+            <div>
+              <div className="font-semibold">{username || "익명"}</div>
+              <div className="text-xs text-gray-400">{fromNow(createAt)}</div>
+            </div>
+          </div>
+          <h2 className="font-bold text-2xl mb-2">{title}</h2>
+          <p className="text-base text-gray-700 mb-2 line-clamp-2">{article}</p>
         </div>
+        {/* 오른쪽: 썸네일 */}
+        <div className="h-[160px] w-[160px] ml-8 flex-shrink-0 flex items-center justify-center">
+          <img
+            src={thumbnail || noimage}
+            alt="썸네일"
+            className="w-full h-full object-cover rounded-lg"
+          />
+        </div>
+
       </div>
     </Link>
   );

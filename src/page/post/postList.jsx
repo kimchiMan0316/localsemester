@@ -1,13 +1,15 @@
 import { useNavigate } from "react-router-dom";
-import getPhoto from "util/getPhoto";
 import { Container } from "../../components/container/container";
-import { PostCard } from "./postCard"; // 게시글 카드 컴포넌트
+import { PostCard } from "./postCard";
+import Pagination from "./Pagination";
 import { useEffect, useState } from "react";
 
+const PAGE_SIZE = 10;
 
 export const PostList = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
   const navigate = useNavigate();
 
   const postCreate = () => navigate("/postCreate");
@@ -17,7 +19,9 @@ export const PostList = () => {
       setLoading(true);
       try {
         const res = await fetch("/post"); // proxy 설정이 있으므로 포트 생략 가능
-        const data = await res.json();
+        let data = await res.json();
+        // 최신순 정렬 (createAt 기준 내림차순)
+        data = data.sort((a, b) => new Date(b.createAt) - new Date(a.createAt));
         setPosts(data);
         console.log("📦 posts:", data);
         console.log(Array.isArray(posts), posts);
@@ -31,7 +35,10 @@ export const PostList = () => {
 
     fetchPosts();
   }, []);
-  // posts가 배열인지 확인
+
+  const totalPages = Math.ceil(posts.length / PAGE_SIZE);
+  const startIdx = (currentPage - 1) * PAGE_SIZE;
+  const currentPosts = posts.slice(startIdx, startIdx + PAGE_SIZE);
 
   return (
     <Container>
@@ -48,9 +55,14 @@ export const PostList = () => {
       {loading && <p>로딩 중입니다...</p>}
       {!loading && posts.length > 0 ? (
         <div className="space-y-4">
-          {posts.slice().reverse().map((post) => (
-            <PostCard key={post.id} item={post} />
+          {currentPosts.map((item) => (
+            <PostCard key={item.id} item={item} />
           ))}
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+          />
         </div>
       ) : (
         <p>게시글이 없습니다.</p>
