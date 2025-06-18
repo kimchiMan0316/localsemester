@@ -22,7 +22,7 @@
 }
 
 .animate-title-fade {
-  animation: titleFadeIn 5s ease forwards; 
+  animation: titleFadeIn 1s ease forwards; 
 }
 
 .speed-text {
