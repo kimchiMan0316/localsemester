@@ -290,8 +290,8 @@
     },
     {
       "title": "ㅁㄴㅇ",
-      "article": "ㅁㄴㅇ",
-      "createAt": "2025-06-18 15:42:57",
+      "article": "ㅁㄴㅇasd",
+      "createAt": "2025-06-18 16:14:18",
       "userId": 2,
       "src": {
         "type": "doc",
@@ -304,7 +304,7 @@
             "content": [
               {
                 "type": "text",
-                "text": "ㅁㄴㅇ"
+                "text": "ㅁㄴㅇasd"
               }
             ]
           }
