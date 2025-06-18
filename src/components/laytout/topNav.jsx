@@ -4,7 +4,6 @@ import { DisplayControler } from "../button/displayControler";
 import { MenuIcon } from "../button/menu";
 import { ProfileButton } from "../button/profileButton";
 import { TabButton } from "../button/tabButton";
-import { Container } from "../container/container";
 
 export const TopNav = ({ children, isLocalSemester }) => {
   const page = [
@@ -19,7 +18,7 @@ export const TopNav = ({ children, isLocalSemester }) => {
   useEffect(() => {
     const handleScroll = () => {
       const nav = document.querySelector("nav");
-      if (window.scrollY > 5 && isLocalSemester) {
+      if (window.scrollY > 5) {
         nav.classList.add(
           "bg-white",
           "border-b",
