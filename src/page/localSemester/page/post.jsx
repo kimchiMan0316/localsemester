@@ -52,7 +52,6 @@ export const LocalSemesterPost = () => {
 
   const getcomments = (newComments) => {
     setComments((state) => [...state, newComments]);
-    console.log(comments);
   };
 
   return (
@@ -62,7 +61,7 @@ export const LocalSemesterPost = () => {
           <PostViewer
             item={article}
             me={me}
-            url="/semester"
+            url="/localsemester"
             deletePosting={() => nav(-1)}
           />
         )}

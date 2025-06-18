@@ -162,6 +162,11 @@
       "sessionId": 1749908074011,
       "uid": 2,
       "id": 20
+    },
+    {
+      "sessionId": 1750228682874,
+      "uid": 2,
+      "id": 21
     }
   ],
   "post": [
@@ -256,6 +261,84 @@
       "photoId": 2,
       "username": "박설호",
       "id": 2
+    },
+    {
+      "title": "asd",
+      "article": "asd",
+      "createAt": "2025-06-17 15:21:25",
+      "userId": 2,
+      "src": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": null
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "asd"
+              }
+            ]
+          }
+        ]
+      },
+      "photoId": "",
+      "username": "김지성",
+      "id": 3
+    },
+    {
+      "title": "ㅁㄴㅇ",
+      "article": "ㅁㄴㅇ",
+      "createAt": "2025-06-18 15:42:57",
+      "userId": 2,
+      "src": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": null
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "ㅁㄴㅇ"
+              }
+            ]
+          }
+        ]
+      },
+      "photoId": "",
+      "username": "김지성",
+      "id": 4
+    },
+    {
+      "title": "ㅂㅈㄷ",
+      "article": "ㅂㅈㄷㅂㅈㄷ",
+      "createAt": "2025-06-18 15:43:03",
+      "userId": 2,
+      "src": {
+        "type": "doc",
+        "content": [
+          {
+            "type": "paragraph",
+            "attrs": {
+              "textAlign": null
+            },
+            "content": [
+              {
+                "type": "text",
+                "text": "ㅂㅈㄷㅂㅈㄷ"
+              }
+            ]
+          }
+        ]
+      },
+      "photoId": "",
+      "username": "김지성",
+      "id": 5
     }
   ],
   "semesterComment": [

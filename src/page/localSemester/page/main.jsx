@@ -12,13 +12,9 @@ import itcomp from "../../../assets/itcomp.jpg";
 
 export const LocalSemesterMain = () => {
   const [semesters, setSemesters] = useState([]);
-  const [selectedPost, setSelectedPost] = useState(null);
-
   const navigate = useNavigate();
 
   const onClickSemesters = (id) => {
-    setSelectedPost(id);
-    console.log(id);
     navigate("/localSemesterPost/" + id);
   };
 
