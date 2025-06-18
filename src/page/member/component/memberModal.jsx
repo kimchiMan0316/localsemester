@@ -13,7 +13,7 @@ const MemberModal = ({
 }) => {
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center z-50">
-      <div className="bg-white dark:bg-gray-900 p-6 rounded-xl max-w-sm w-full shadow-lg relative">
+      <div className="bg-white dark:bg-gray-900 p-6 rounded-xl max-w-xl w-full shadow-lg relative">
         <button
           className="absolute top-2 right-3 text-gray-500 hover:text-red-500 text-xl"
           onClick={onClose}
@@ -61,7 +61,7 @@ const MemberModal = ({
           ) : (
             <button
               onClick={() => setIsEditing(true)}
-              className="w-full mt-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+              className="w-full mt-4 py-2 bg-blue-400 text-white rounded hover:bg-blue-500"
             >
               수정하기
             </button>

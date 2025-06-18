@@ -11,10 +11,10 @@ import MemberNameList from "./component/memberNameList";
 import MemberModal from "./component/memberModal";
 
 const slogans = [
-  "우리는 함께 성장합니다.",
-  "각자의 색깔이 모여 하나의 팀이 됩니다.",
-  "열정은 우리의 공통 언어입니다.",
-  "협력은 우리를 하나로 이어줍니다.",
+  "함께 만드는 아름다움.",
+  "각자의 이야기가, 새로운 가능성을.",
+  "한 방향을 향한, 수많은 관점.",
+  "우리는 기술이 아니라 경험을 만듭니다.",
 ];
 
 const Member = () => {
