@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import { Home } from "../page/home/home";
 import { Profile } from "../page/profile/profile";
-import { Post } from "../page/post/post";
+import { PostDetail } from "../page/post/postDetail";
 import Login from "../page/login/login";
 import { CreateAccount } from "../page/createAccount/create_Account";
 import DefaultLayout from "../components/laytout/defaultLayout";
@@ -17,6 +17,7 @@ import { LocalSemesterCreatePost } from "../page/localSemester/page/createPost";
 import { LocalSemesterPost } from "../page/localSemester/page/post";
 import { localSemesterLoader } from "./api/localsemesterLoader";
 import { memberLoader } from "./api/memberLoader";
+import MyEditor from "../components/form/postForm/postForm";
 
 export const router = createBrowserRouter([
   {
@@ -38,7 +39,11 @@ export const router = createBrowserRouter([
       },
       {
         path: "/post/:id",
-        element: <Post />,
+        element: <PostDetail />,
+      },
+      {
+        path: "/postCreate",
+        element: <MyEditor url={"/post"} exitPath={"/post"} post={true} />,
       },
       {
         path: "/postEdit/:id",
