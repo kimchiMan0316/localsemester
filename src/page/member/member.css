@@ -2,13 +2,14 @@
   color: #ffffff;
   font-weight: bold;
   text-shadow:
-    0 0 8px #fef2d8,
-    0 0 16px #fcdca1,
-    0 0 24px #e8b960,
-    0 0 32px #c79432,
-    0 0 48px rgba(255, 200, 100, 0.5),
-    0 0 64px rgba(255, 160, 60, 0.3);
+    0 0 8px #bce7ff,        
+    0 0 16px #89d6ff,        
+    0 0 24px #55c3ff,        
+    0 0 32px #37b4fe,        
+    0 0 48px rgba(55, 180, 254, 0.5),
+    0 0 64px rgba(55, 180, 254, 0.3);
 }
+
 @keyframes titleFadeIn {
   0% {
     opacity: 0;
@@ -21,7 +22,7 @@
 }
 
 .animate-title-fade {
-  animation: titleFadeIn 5s ease forwards; /* 3초 동안 천천히 등장 */
+  animation: titleFadeIn 5s ease forwards; 
 }
 
 .speed-text {
@@ -29,7 +30,7 @@
   font-size: 2rem;
   letter-spacing: -1px;
 
-  background: linear-gradient(to right, #f8cdbb 60%, #ffffff 100%);
+ background: linear-gradient(90deg, #37b4fe 0%,#88bfdf 30%,#f3d8a5 50%,#9361e4 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
