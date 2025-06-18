@@ -21,7 +21,7 @@
 }
 
 .animate-title-fade {
-  animation: titleFadeIn 5s ease forwards; /* 3초 동안 천천히 등장 */
+  animation: titleFadeIn 1s ease forwards; 
 }
 
 .speed-text {
