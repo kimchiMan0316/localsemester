@@ -167,6 +167,11 @@
       "sessionId": 1750228682874,
       "uid": 2,
       "id": 21
+    },
+    {
+      "sessionId": 1750277029275,
+      "uid": 1,
+      "id": 22
     }
   ],
   "post": [
@@ -357,6 +362,30 @@
       "article": "줫대긴하노",
       "createAt": "2025-05-26 16:30:30",
       "username": "박설호"
+    },
+    {
+      "userId": 1,
+      "username": "박설호",
+      "semesterId": 5,
+      "article": "asd",
+      "createAt": "2025-06-19 05:04:10",
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "username": "박설호",
+      "semesterId": 4,
+      "article": "레전드",
+      "createAt": "2025-06-19 05:06:24",
+      "id": 4
+    },
+    {
+      "userId": 1,
+      "username": "박설호",
+      "semesterId": 2,
+      "article": "좋네요",
+      "createAt": "2025-06-19 05:06:36",
+      "id": 5
     }
   ],
   "member": [

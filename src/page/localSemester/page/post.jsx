@@ -41,7 +41,7 @@ export const LocalSemesterPost = () => {
   }, []);
 
   const fetchComments = () => {
-    fetch("/semesterComment")
+    fetch(`/semesterComment?semesterId=${id}`)
       .then((res) => res.json())
       .then((data) => setComments(data));
   };
@@ -67,15 +67,15 @@ export const LocalSemesterPost = () => {
         )}
       </Container>
       <Container>
-        <CommentForm
-          articleId={id}
-          url={"/semesterComment"}
-          getComment={getcomments}
-        />
         <CommentBox
           comment={comments}
           url={"/semesterComment"}
           deleteComment={deleteComment}
+        />
+        <CommentForm
+          articleId={Number(id)}
+          url={"/semesterComment"}
+          getComment={getcomments}
         />
       </Container>
     </>
