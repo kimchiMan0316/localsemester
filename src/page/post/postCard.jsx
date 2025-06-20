@@ -41,6 +41,7 @@ export const PostCard = ({ item }) => {
   }, [userId]);
 
   return (
+    <div className="flex justify-center">
     <Link
       to={`/post/${id}`}
       className="block w-8/12 bg-white rounded-xl shadow px-4 py-4 hover:shadow-lg dark:bg-card-dark"
@@ -74,5 +75,6 @@ export const PostCard = ({ item }) => {
         </div>
       </div>
     </Link>
+    </div>
   );
 };
