@@ -42,18 +42,18 @@ export const PostList = () => {
 
   return (
     <Container>
-      <div className="flex items-center justify-between mb-4">
-        <h1 className="text-xl font-kakao">게시판</h1>
+      <div className="flex items-center justify-between mt-4">
+        <h1 className="ml-4 text-xl font-kakao">게시판</h1>
         <button
           onClick={postCreate}
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+          className="bg-blue-500 font-kakao text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition mr-4"
         >
           글쓰기
         </button>
       </div>
 
       {loading ? (
-        <p>로딩 중입니다...</p>
+        <p></p>
       ) : posts.length > 0 ? (
         <div className="space-y-4 pt-4 mb-6">
           {currentPosts.map((item) => (

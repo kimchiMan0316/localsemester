@@ -52,7 +52,7 @@ export const PostDetail = () => {
         console.log(comments);
     };
 
-    if (!posts) return <p>로딩 중...</p>;
+    if (!posts) return <p></p>;
 
     return (
         <>
