@@ -30,7 +30,11 @@
   font-size: 2rem;
   letter-spacing: -1px;
 
- background: linear-gradient(90deg, #37b4fe 0%,#88bfdf 30%,#f3d8a5 50%,#9361e4 100%);
+  background: linear-gradient(to right,
+  #37b5ff , 
+  #aabee1 10%, 
+  #e1a9d0 30%,
+  #db7dc0 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   display: inline-block;
