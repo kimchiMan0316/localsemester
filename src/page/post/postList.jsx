@@ -3,6 +3,7 @@ import { Container } from "../../components/container/container";
 import { PostCard } from "./postCard";
 import Pagination from "./Pagination";
 import { useEffect, useState } from "react";
+import { Button } from "components/button/button";
 
 const PAGE_SIZE = 10;
 
@@ -43,13 +44,10 @@ export const PostList = () => {
   return (
     <Container>
       <div className="flex items-center justify-between mt-4">
-        <h1 className="ml-4 text-xl font-kakao">게시판</h1>
-        <button
-          onClick={postCreate}
-          className="bg-blue-500 font-kakao text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition mr-4"
-        >
+        <h1 className="ml-4 text-2xl font-semibold font-kakao">게시판</h1>
+        <Button onClick={postCreate} className="font-kakao px-4 py-2 ">
           글쓰기
-        </button>
+        </Button>
       </div>
 
       {loading ? (

@@ -91,7 +91,11 @@ export const PostViewer = ({ item, me, url, deletePosting }) => {
         <div className="w-full">
           <div className="flex justify-between border-b border-[#ededed] pb-4 mb-4  dark:border-brand-sub">
             <div className="flex gap-4 items-center justify-start ">
-              <ProfilePhotoContainer id={photoId} width="10" alt="프로필사진" />
+              <ProfilePhotoContainer
+                id={item.userId}
+                width="10"
+                alt="프로필사진"
+              />
               <div className="h-10">
                 <p>{item.username}</p>
                 <p className="text-sm text-brand-sub">

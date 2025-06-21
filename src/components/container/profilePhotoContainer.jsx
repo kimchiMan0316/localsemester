@@ -13,7 +13,10 @@ export const ProfilePhotoContainer = ({ id, width, alt }) => {
 
   useEffect(() => {
     const photo = async () => {
-      const profileImg = await getPhoto(id);
+      const getPhotoId = await fetch(`/user?id=${id}`);
+      const response = await getPhotoId.json();
+
+      const profileImg = await getPhoto(response[0].photoId);
       setProfilePhoto(profileImg);
     };
     photo();
@@ -22,7 +25,7 @@ export const ProfilePhotoContainer = ({ id, width, alt }) => {
   return (
     <div
       onClick={onClick}
-      className={`flex cursor-pointer justify-center items-center rounded-full overflow-hidden w-${width} h-${width}`}
+      className={`flex cursor-pointer aspect-square justify-center items-center rounded-full overflow-hidden w-${width} h-${width}`}
     >
       <img
         className="w-full h-full object-cover"
