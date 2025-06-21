@@ -12,9 +12,10 @@ export const TopNav = ({ children, isLocalSemester }) => {
     { path: "/post", name: "게시판" },
     { path: "/member", name: "맴버" },
   ];
-  const navbg = isLocalSemester
-    ? "bg-transparent"
-    : "border-b bg-white border-b-[#ededed] dark:border-b-[#282828] dark:bg-brand-dark ";
+  const navbg =
+    isLocalSemester[0] || isLocalSemester[1]
+      ? "bg-transparent"
+      : "border-b bg-white border-b-[#ededed] dark:border-b-[#282828] dark:bg-brand-dark ";
   useEffect(() => {
     const handleScroll = () => {
       const nav = document.querySelector("nav");

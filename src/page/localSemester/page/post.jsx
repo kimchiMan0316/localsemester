@@ -15,6 +15,10 @@ export const LocalSemesterPost = () => {
 
   const me = article?.userId === userid;
 
+  const deleteComment = (id) => {
+    fetchComments();
+  };
+
   useEffect(() => {
     const getArticle = async () => {
       try {
@@ -36,9 +40,18 @@ export const LocalSemesterPost = () => {
       });
   }, []);
 
+  const fetchComments = () => {
+    fetch(`/semesterComment?semesterId=${id}`)
+      .then((res) => res.json())
+      .then((data) => setComments(data));
+  };
+
+  useEffect(() => {
+    fetchComments();
+  }, []);
+
   const getcomments = (newComments) => {
     setComments((state) => [...state, newComments]);
-    console.log(comments);
   };
 
   return (
@@ -48,18 +61,22 @@ export const LocalSemesterPost = () => {
           <PostViewer
             item={article}
             me={me}
-            url="/semester"
+            url="/localsemester"
             deletePosting={() => nav(-1)}
           />
         )}
       </Container>
       <Container>
+        <CommentBox
+          comment={comments}
+          url={"/semesterComment"}
+          deleteComment={deleteComment}
+        />
         <CommentForm
-          articleId={id}
+          articleId={Number(id)}
           url={"/semesterComment"}
           getComment={getcomments}
         />
-        <CommentBox comment={comments} url={"/semesterComment"} />
       </Container>
     </>
   );
