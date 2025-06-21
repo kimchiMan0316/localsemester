@@ -1,18 +1,18 @@
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     return (
-        <div className="flex justify-center gap-2 mt-4">
+        <div className="flex justify-center gap-2 mt-4  ">
             <button
                 onClick={() => onPageChange(currentPage - 1)}
                 disabled={currentPage === 1}
-                className="px-3 py-1 border rounded disabled:opacity-50"
+                className="px-3 py-1 border-rounded border-none disabled:opacity-50  dark:bg-card-dark"
             >
-                이전
+                ←
             </button>
             {Array.from({ length: totalPages }, (_, i) => (
                 <button
                     key={i + 1}
                     onClick={() => onPageChange(i + 1)}
-                    className={`px-3 py-1 border rounded ${currentPage === i + 1 ? "bg-blue-500 text-white" : ""}`}
+                    className={`px-3 py-1 border-none border-rounded ${currentPage === i + 1 ? "text-blue-500 underline decoration-blue-500" : ""}`}
                 >
                     {i + 1}
                 </button>
@@ -20,9 +20,9 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
             <button
                 onClick={() => onPageChange(currentPage + 1)}
                 disabled={currentPage === totalPages}
-                className="px-3 py-1 border rounded disabled:opacity-50"
+                className="px-3 py-1 border rounded border-none disabled:opacity-50  dark:bg-card-dark"
             >
-                다음
+                →
             </button>
         </div>
     );

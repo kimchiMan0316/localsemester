@@ -17,7 +17,7 @@ import { LocalSemesterCreatePost } from "../page/localSemester/page/createPost";
 import { LocalSemesterPost } from "../page/localSemester/page/post";
 import { localSemesterLoader } from "./api/localsemesterLoader";
 import { memberLoader } from "./api/memberLoader";
-import MyEditor from "../components/form/postForm/postForm";
+import { PostCreate } from "../page/post/postCreate";
 
 export const router = createBrowserRouter([
   {
@@ -43,7 +43,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/postCreate",
-        element: <MyEditor url={"/post"} exitPath={"/post"} post={true} />,
+        element: <PostCreate />,
       },
       {
         path: "/postEdit/:id",
