@@ -17,7 +17,6 @@ export const PostList = ({ semesters, onClick }) => {
   const { state } = useMyProfile((state) => state.myProfile);
 
   const isAdmin = state === 777;
-  console.log(semesters);
   return (
     <div className="w-screen overflow-x-auto pl-4 pr-4">
       <Container>

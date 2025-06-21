@@ -24,7 +24,7 @@ export const CommentBox = ({ comment, url, deleteComment }) => {
           headers: { "Content-Type": "application/json" },
         });
         if (typeof deleteComment === "function") {
-          deleteComment();
+          deleteComment(id);
         }
       } catch (error) {
         console.error(error);

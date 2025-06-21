@@ -45,6 +45,9 @@ export const PostDetail = () => {
   const getcomments = (newComments) => {
     setComments((state) => [...state, newComments]);
   };
+  const commentDelete = (id) => {
+    setComments((state) => state.filter((item) => item?.id !== id));
+  };
 
   if (!posts) return <p></p>;
 
@@ -64,7 +67,11 @@ export const PostDetail = () => {
           url={"/postComment"}
           getComment={getcomments}
         />
-        <CommentBox comment={comments} url={"/postComment"} />
+        <CommentBox
+          comment={comments}
+          url={"/postComment"}
+          deleteComment={commentDelete}
+        />
       </Container>
     </>
   );
