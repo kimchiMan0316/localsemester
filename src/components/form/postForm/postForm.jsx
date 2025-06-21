@@ -9,7 +9,6 @@ import { Button } from "../../button/button";
 import FontSize from "./components/customFontSize";
 import Underline from "@tiptap/extension-underline";
 import { useEffect, useState } from "react";
-import { checkAuth } from "../../../auth/auth";
 import { useNavigate } from "react-router-dom";
 import { createAt } from "../../../util/createAt";
 import { useMyProfile } from "../../../store/myprofile";
@@ -54,12 +53,6 @@ const MyEditor = ({ url, exitPath, closeModal, callback, init, post }) => {
 
   const createPosting = async () => {
     if (!editor) return;
-    const session = await checkAuth();
-    if (!session) {
-      alert("인증 오류입니다.");
-      nav("/login", { replace: true });
-      return;
-    }
 
     // 이미지 찾기 (첫 번째 이미지)
     const findFirstImageNode = (node) => {
@@ -81,7 +74,6 @@ const MyEditor = ({ url, exitPath, closeModal, callback, init, post }) => {
 
       let photoId = init?.photoId || "";
 
-      console.log(photoId);
       if (firstPhoto) {
         const req = await fetch(
           `/photo/` + (method === "PATCH" ? init.photoId : ""),

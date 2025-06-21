@@ -25,7 +25,7 @@ export const PostList = ({ semesters, onClick }) => {
           <p className="text-4xl font-kakao">공지사항</p>
           {isAdmin && (
             <button
-              className="text-[#0066CC] text-sm ml-4"
+              className="text-[#38b4ff] dark:text-[#38b4ff] text-sm ml-4"
               onClick={onClickBtn}
             >
               글쓰기 &gt;

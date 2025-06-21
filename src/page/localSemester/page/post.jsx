@@ -67,15 +67,15 @@ export const LocalSemesterPost = () => {
         )}
       </Container>
       <Container>
-        <CommentBox
-          comment={comments}
-          url={"/semesterComment"}
-          deleteComment={deleteComment}
-        />
         <CommentForm
           articleId={Number(id)}
           url={"/semesterComment"}
           getComment={getcomments}
+        />
+        <CommentBox
+          comment={comments}
+          url={"/semesterComment"}
+          deleteComment={deleteComment}
         />
       </Container>
     </>
