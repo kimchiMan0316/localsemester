@@ -12,13 +12,9 @@ import itcomp from "../../../assets/itcomp.jpg";
 
 export const LocalSemesterMain = () => {
   const [semesters, setSemesters] = useState([]);
-  const [selectedPost, setSelectedPost] = useState(null);
-
   const navigate = useNavigate();
 
   const onClickSemesters = (id) => {
-    setSelectedPost(id);
-    console.log(id);
     navigate("/localSemesterPost/" + id);
   };
 
@@ -32,14 +28,12 @@ export const LocalSemesterMain = () => {
   // 1410 831
   return (
     <>
-      <div className="h-screen lg:block hidden">
-        <video muted autoPlay loop className="w-full h-full object-cover">
-          <source src={semesterVideo} type="video/mp4" />
+      <div className="h-screen">
+        <video muted autoPlay loop className="w-full h-full object-cover ">
+          <source src={semesterVideo} type="video/mp4 " />
         </video>
       </div>
-      <div className="mt-40 flex justify-center">
-        <PostList semesters={semesters} onClick={onClickSemesters} />
-      </div>
+
       <Container>
         <div>
           <div className="flex flex-row items-start justify-start mt-52">
@@ -140,6 +134,9 @@ export const LocalSemesterMain = () => {
           </div>
         </div>
       </Container>
+      <div className="mt-40 flex justify-center">
+        <PostList semesters={semesters} onClick={onClickSemesters} />
+      </div>
     </>
   );
 };

@@ -28,7 +28,7 @@ export const PostList = ({ semesters, onClick }) => {
               className="text-[#0066CC] text-sm ml-4"
               onClick={onClickBtn}
             >
-              글싸지르기 &gt;
+              글쓰기 &gt;
             </button>
           )}
         </div>
